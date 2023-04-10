@@ -1,25 +1,24 @@
-const express = require('express')
-const cors = require("cors")
-const app = express()
+const express = require("express");
+const cors = require("cors");
+const port = 5000;
 
-const port = 5000
+const app = express();
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-app.use(cors())
-app.use(express.json())
-app.use(express.urlencoded({ extended: false }))
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+app.get("/mynewroute", (req, res) => {
+  res.send("UT in GHW!!!!!!");
+});
 
-app.get('/newroute', (req, res) => {
-  res.send('Create neww route !!')
-})
-
-app.get('/newroute', (req, res) => {
-  res.send('Create neww route2 !!')
-})
+app.get("/mynewroute2", (req, res) => {
+  res.send("MLH GHW!!!!!!");
+});
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+  console.log(`Server live on port ${port}`);
+});
